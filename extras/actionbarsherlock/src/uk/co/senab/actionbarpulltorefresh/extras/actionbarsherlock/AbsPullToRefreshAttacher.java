@@ -47,6 +47,9 @@ class AbsPullToRefreshAttacher extends
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             super.addHeaderViewToActivity(headerView);
         } else {
+        	if (getAttachedActivity() == null)
+        		return;
+        	
             // On older devices we need to wrap the HeaderView in a FrameLayout otherwise
             // visibility changes do not take effect
             mHeaderViewWrapper = new FrameLayout(getAttachedActivity());
